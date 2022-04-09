@@ -1,4 +1,10 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using GoalSystemsDb.Data;
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<GoalSystemsDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("GoalSystemsDbContext")));
 
 // Add services to the container.
 
